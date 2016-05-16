@@ -218,6 +218,9 @@ angular.module('uiGmapgoogle-maps.directives.api')
             #TODO: These watches could potentially be removed infavor of using control only
             # Update map when center coordinates change
             scope.$watch 'center', (newValue, oldValue) =>
+
+              return if typeof newValue == 'undefined'
+              return unless newValue?
               return if newValue == oldValue or settingFromDirective
               coords = @getCoords scope.center #get scope.center to make sure that newValue is not behind
               return if coords.lat() is _gMap.center.lat() and coords.lng() is _gMap.center.lng()

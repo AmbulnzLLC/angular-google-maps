@@ -1,4 +1,4 @@
-/*! angular-google-maps 2.3.3 2016-05-13
+/*! angular-google-maps 2.3.3 2016-05-17
  *  AngularJS directives for Google Maps
  *  git: https://github.com/angular-ui/angular-google-maps.git
  */
@@ -6858,6 +6858,12 @@ Original idea from: http://stackoverflow.com/questions/22758950/google-map-drawi
             }
             scope.$watch('center', function(newValue, oldValue) {
               var coords;
+              if (typeof newValue === 'undefined') {
+                return;
+              }
+              if (newValue == null) {
+                return;
+              }
               if (newValue === oldValue || settingFromDirective) {
                 return;
               }
